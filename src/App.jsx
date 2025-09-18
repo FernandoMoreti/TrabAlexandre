@@ -32,7 +32,7 @@ function App() {
   }
 
   function showAlunosByRA() {
-    filteredAlunos.sort((a, b) => a.ra - b.ra)
+    filteredAlunos.sort((a, b) => b.ra - a.ra)
   }
 
   function showAlunosByNameAprove() {
@@ -65,7 +65,7 @@ function App() {
             <Input value={media} onChange={(e) => setMedia(e.target.value)} placeholder="Qual foi a media do aluno" type="number" step="0.1" />
             <p>Sexo:</p>
             <select value={sex} onChange={(e) => setSex(e.target.value)} className='px-5 py-2 border-1 rounded-sm transition-all durations-300 hover:border-gray-400'>
-              <option className='bg-black'>Selecione o Sexo</option>
+              <option className='bg-black hidden'>Selecione o Sexo</option>
               <option className='bg-black' value="Masculino">Masculino</option>
               <option className='bg-black' value="Feminino">Feminino</option>
               <option className='bg-black' value="esquisito">outro</option>
