@@ -28,16 +28,28 @@ function App() {
   }
 
   function showAlunosByName() {
-    filteredAlunos.sort((a, b) => a.name.localeCompare(b.name))
+    for (let i = 0; i < filteredAlunos.length - 1; i++) {
+      for (let j = 0; j < filteredAlunos.length - i - 1; j++) {
+        if (filteredAlunos[j].name.toLowerCase() > filteredAlunos[j + 1].name.toLowerCase()) {
+          [filteredAlunos[j], filteredAlunos[j + 1]] = [filteredAlunos[j + 1], filteredAlunos[j]];
+        }
+      }
+    }
   }
 
   function showAlunosByRA() {
-    filteredAlunos.sort((a, b) => b.ra - a.ra)
+    for (let i = 0; i < filteredAlunos.length - 1; i++) {
+      for (let j = 0; j < filteredAlunos.length - i - 1; j++) {
+        if (filteredAlunos[j].ra < filteredAlunos[j + 1].ra) {
+          [filteredAlunos[j], filteredAlunos[j + 1]] = [filteredAlunos[j + 1], filteredAlunos[j]];
+        }
+      }
+    }
   }
 
   function showAlunosByNameAprove() {
     filteredAlunos = filteredAlunos.filter((aluno) => aluno.media >= 6)
-    filteredAlunos.sort((a, b) => a.name.localeCompare(b.name))
+    showAlunosByName()
   }
 
 
